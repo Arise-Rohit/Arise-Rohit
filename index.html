@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyMusic — Streaming Player Clone</title>
+  
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom External Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+
+  <!-- AUTHENTICATION SCREEN -->
+  <div id="auth-screen" class="fixed inset-0 flex items-center justify-center w-full min-h-screen p-4 bg-gray-900 z-50">
+    <div class="bg-gray-800 border border-gray-700 p-8 md:p-12 rounded-2xl shadow-2xl text-center animate-fadeIn w-full max-w-sm">
+      <h1 class="text-4xl font-extrabold mb-4 text-green-400">MyMusic</h1>
+      <p class="text-gray-400 mb-8">Sign in or create your free account.</p>
+      
+      <div class="flex justify-center gap-4 mb-6">
+        <button id="loginBtn" class="flex-1 py-2 rounded-full bg-green-500 text-black font-semibold hover:bg-green-400 transition-colors shadow-md">Sign In</button>
+        <button id="signupBtn" class="flex-1 py-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors text-gray-100">Register</button>
+      </div>
+
+      <div class="mb-8">
+        <button id="facebookLoginBtn" class="w-full py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-colors flex items-center justify-center gap-3 shadow-lg">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.493v-9.294h-3.13v-3.626h3.13V8.835c0-3.1 1.894-4.786 4.659-4.786 1.325 0 2.464.098 2.8.142v3.21l-1.894.001c-1.488 0-1.777.708-1.777 1.74V10.98h3.606l-.577 3.626h-3.03V24h6.126C23.407 24 24 23.407 24 22.675V1.325C24 .593 23.407 0 22.675 0z"/>
+          </svg>
+          Continue with Facebook
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="hidden mt-6 animate-slideUp">
+        <input type="email" placeholder="Email" class="w-full p-3 mb-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-green-500 focus:border-green-500" required />
+        <input type="password" placeholder="Password" class="w-full p-3 mb-6 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-green-500 focus:border-green-500" required />
+        <button type="submit" class="w-full py-3 bg-green-500 text-black font-bold rounded-lg hover:bg-green-400 transition-colors shadow-lg">Sign In</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signupForm" class="hidden mt-6 animate-slideUp">
+        <input type="text" id="signupUsername" placeholder="Username" class="w-full p-3 mb-3 rounded-lg bg-gray-700 text-white border border-gray-600" required />
+        <input type="email" placeholder="Email" class="w-full p-3 mb-3 rounded-lg bg-gray-700 text-white border border-gray-600" required />
+        <input type="password" placeholder="Password" class="w-full p-3 mb-4 rounded-lg bg-gray-700 text-white border border-gray-600" required />
+        <select id="signupUserType" class="w-full p-3 mb-6 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-green-500 focus:border-green-500">
+          <option value="listener">Listener (Default)</option>
+          <option value="creator">Singer/Creator</option>
+        </select>
+        <button type="submit" class="w-full py-3 bg-green-500 text-black font-bold rounded-lg hover:bg-green-400 transition-colors shadow-lg">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FACEBOOK LOGIN MODAL -->
+  <div id="facebookModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-sm transform scale-100 animate-fadeIn">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold text-black">Log in with Facebook</h2>
+        <button id="closeFacebookModal" class="text-gray-600 hover:text-black">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <form id="facebookLoginForm" class="text-black">
+        <input type="text" id="fbUsernameInput" placeholder="Email address or phone number" class="w-full p-3 mb-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required />
+        <input type="password" placeholder="Password" class="w-full p-3 mb-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500" required />
+        <button type="submit" class="w-full py-3 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition-colors">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN APP WRAPPER -->
+  <div id="app-wrapper" class="hidden flex flex-col min-h-screen w-full">
+    <input type="file" id="photoInput" accept="image/*" class="hidden" />
+  </div>
+
+  <!-- Custom External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

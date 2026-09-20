@@ -1,0 +1,52 @@
+/* Modern Base Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  color: #E5E7EB; /* gray-200 */
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn { 
+  from { opacity: 0; transform: translateY(10px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
+
+@keyframes slideUp { 
+  from { opacity: 0; transform: translateY(20px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
+
+.animate-fadeIn { 
+  animation: fadeIn 0.5s ease forwards; 
+}
+
+.animate-slideUp { 
+  animation: slideUp 0.4s ease forwards; 
+}
+
+/* Custom Scrollbar for Main Content */
+.main-content::-webkit-scrollbar {
+  width: 6px;
+}
+.main-content::-webkit-scrollbar-thumb {
+  background-color: #4B5563; /* gray-600 */
+  border-radius: 3px;
+}
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Modern Input Focus */
+input:focus, textarea:focus, select:focus {
+  border-color: #10B981 !important; /* emerald-500 */
+  box-shadow: 0 0 0 1px #10B981;
+}
+
+/* Modern Card Hover Effect */
+.track-card {
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+.track-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+  background-color: #374151; /* Deeper gray on hover */
+}
